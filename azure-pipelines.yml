@@ -14,18 +14,16 @@ steps:
   inputs:
     command: 'init'
     allowTelemetryCollection: false
+
 - task: TerraformCLI@0
   inputs:
     command: 'plan'
     environmentServiceName: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
-    providerAzureRmSubscriptionId: 'f8b9b693-fc66-4e1b-a547-110404abc3c3'
     runAzLogin: true
-    allowTelemetryCollection: false
-
+    allowTelemetryCollection: true
 - task: TerraformCLI@0
   inputs:
     command: 'apply'
     environmentServiceName: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
-    providerAzureRmSubscriptionId: 'f8b9b693-fc66-4e1b-a547-110404abc3c3'
     runAzLogin: true
     allowTelemetryCollection: true
