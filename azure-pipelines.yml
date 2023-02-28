@@ -10,13 +10,18 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: TerraformCLI@0
+- task: TerraformInstaller@0
   inputs:
-    command: 'init'
-    allowTelemetryCollection: false
+    terraformVersion: 'latest'
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az login;
+      az account set --subscription Demos
 - task: TerraformCLI@0
   inputs:
     command: 'plan'
-    providerAzureRmSubscriptionId: 'f8b9b693-fc66-4e1b-a547-110404abc3c3'
-    runAzLogin: true
     allowTelemetryCollection: false
