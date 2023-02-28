@@ -19,11 +19,11 @@ steps:
   inputs:
     command: 'plan'
     environmentServiceName: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
-    runAzLogin: true
+    runAzLogin: false
     allowTelemetryCollection: true
 - task: TerraformCLI@0
   inputs:
     command: 'apply'
     environmentServiceName: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
-    runAzLogin: true
+    runAzLogin: false
     allowTelemetryCollection: true
