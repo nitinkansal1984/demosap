@@ -37,7 +37,7 @@ stages:
 
 - stage:
   jobs:
-   - deployment: Remove all resources
+   - deployment: RemoveAllResources
      displayName: Remove all resources
      pool:
          vmImage: 'ubuntu-latest'
