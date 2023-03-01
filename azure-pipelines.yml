@@ -39,10 +39,10 @@ stages:
   jobs:
    - deployment: Remove all resources
      displayName: Remove all resources
-      pool:
+     pool:
          vmImage: 'ubuntu-latest'
-      environment: 'prod'      
-      strategy:
+     environment: 'prod'      
+     strategy:
         runOnce:
           deploy:
             steps:
