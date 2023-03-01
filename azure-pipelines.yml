@@ -34,3 +34,21 @@ stages:
         provider: 'azurerm'
         command: 'apply'
         environmentServiceNameAzureRM: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
+
+- stage:
+  jobs:
+   - deployment: Remove all resources
+     displayName: Remove all resources
+      pool:
+         vmImage: 'ubuntu-latest'
+      environment: 'prod'      
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: TerraformTaskV4@4
+              inputs:
+                provider: 'azurerm'
+                command: 'destroy'
+                environmentServiceNameAzureRM: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
+    
