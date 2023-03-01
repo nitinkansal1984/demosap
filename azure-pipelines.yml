@@ -17,3 +17,9 @@ steps:
       backendAzureRmStorageAccountName: 'sapstorage2802'
       backendAzureRmContainerName: 'kkjkkj'
       backendAzureRmKey: 'terraformstate'
+
+  - task: TerraformTaskV4@4
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      environmentServiceNameAzureRM: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
