@@ -16,29 +16,15 @@ variables:
 
 stages:
 - stage: TerraformValidate
-  jobs:
-    - job: TerraformValidateJob
-      continueOnError: false
-      steps:
-      - task: PublishPipelineArtifact@1
-        displayName: Publish Artifacts
-        inputs:
-          targetPath: '$(System.DefaultWorkingDirectory)'
-          artifact: 'terraform-manifests-out'
-          publishLocation: 'pipeline'
-      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
-        displayName: Terraform Install
-        inputs:
-          terraformVersion: 'latest'
-      - task: TerraformCLI@0
-        displayName: Terraform Init
-        inputs:
-          command: 'init'
-          workingDirectory: '$(System.DefaultWorkingDirectory)'
-
-      - task: TerraformCLI@0
-        displayName: Terraform Validate
-        inputs:
-          command: 'validate'
-          workingDirectory: '$(System.DefaultWorkingDirectory)'
-          allowTelemetryCollection: false
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
+    backendAzureRmResourceGroupName: 'terraform'
+    backendAzureRmStorageAccountName: 'sapstorage2802'
+    backendAzureRmContainerName: 'kkjkkj'
+    backendAzureRmKey: 'terraform'
