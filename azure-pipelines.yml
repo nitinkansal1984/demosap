@@ -17,6 +17,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        workingDirectory: '$(Pipeline.Workspace)'
         backendServiceArm: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
         backendAzureRmResourceGroupName: 'terraform'
         backendAzureRmStorageAccountName: 'sapstorage2802'
@@ -26,12 +27,14 @@ stages:
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
+        workingDirectory: '$(Pipeline.Workspace)'
         command: 'plan'
         environmentServiceNameAzureRM: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
 
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
+        workingDirectory: '$(Pipeline.Workspace)'
         command: 'apply'
         environmentServiceNameAzureRM: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
 
