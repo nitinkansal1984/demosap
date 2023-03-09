@@ -10,7 +10,14 @@ stages:
   - job: Terraform
     continueOnError: false
     steps:
-
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az login
+          az account set -n SAP-PS_Interview-PRD
     - task: TerraformInstaller@1
       inputs:
         terraformVersion: 'latest'
