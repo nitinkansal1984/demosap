@@ -10,14 +10,6 @@ stages:
   - job: Terraform
     continueOnError: false
     steps:
-    - task: AzureCLI@2
-      inputs:
-        azureSubscription: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
-        scriptType: 'bash'
-        scriptLocation: 'inlineScript'
-        inlineScript: |
-          az login --tenant d52c9ea1-7c21-47b1-82a3-33a74b1f74b8
-          az account set -n SAP-PS_Interview-PRD
     - task: TerraformInstaller@1
       inputs:
         terraformVersion: 'latest'
@@ -74,5 +66,3 @@ stages:
                 command: 'destroy'
                 workingDirectory: '$(System.DefaultWorkingDirectory)'
                 environmentServiceNameAzureRM: 'Demos (f8b9b693-fc66-4e1b-a547-110404abc3c3)'
-
-    
