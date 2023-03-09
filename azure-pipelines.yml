@@ -16,7 +16,7 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az login
+          az login --tenant d52c9ea1-7c21-47b1-82a3-33a74b1f74b8
           az account set -n SAP-PS_Interview-PRD
     - task: TerraformInstaller@1
       inputs:
